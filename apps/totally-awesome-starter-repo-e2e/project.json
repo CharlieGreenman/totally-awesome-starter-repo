@@ -1,0 +1,29 @@
+{
+  "name": "totally-awesome-starter-repo-e2e",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "apps/totally-awesome-starter-repo-e2e/src",
+  "projectType": "application",
+  "targets": {
+    "e2e": {
+      "executor": "@nx/cypress:cypress",
+      "options": {
+        "cypressConfig": "apps/totally-awesome-starter-repo-e2e/cypress.json",
+        "devServerTarget": "totally-awesome-starter-repo:serve:development"
+      },
+      "configurations": {
+        "production": {
+          "devServerTarget": "totally-awesome-starter-repo:serve:production"
+        }
+      }
+    },
+    "lint": {
+      "executor": "@nx/linter:eslint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": ["apps/totally-awesome-starter-repo-e2e/**/*.{js,ts}"]
+      }
+    }
+  },
+  "tags": [],
+  "implicitDependencies": ["totally-awesome-starter-repo"]
+}
